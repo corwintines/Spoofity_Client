@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(7,0,124);
+  background: linear-gradient(35deg, rgba(7,0,124,1) 0%, rgba(79,79,159,1) 39%, rgba(0,212,255,1) 100%);
+  position: absolute;
+}
