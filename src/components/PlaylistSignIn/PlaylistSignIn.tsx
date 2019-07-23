@@ -20,6 +20,7 @@ const PlaylistSignIn: React.FC<Props> = (props) => {
       />
       <Button
         label={'Submit'}
+        // TODO: Implement server connection for playlist verification
         click={() => {props.setPlaylistID(currentPlaylist)}}
       />
     </div>

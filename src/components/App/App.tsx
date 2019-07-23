@@ -13,6 +13,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      {/* TODO: Add logo here */}
       {
         playlistID
           ? <SongSelection playlistID={playlistID} />
