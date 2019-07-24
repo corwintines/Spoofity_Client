@@ -11,6 +11,11 @@
   width: 49%;
   height: 100%;
   float: left;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .verticalBorder {
@@ -35,5 +40,15 @@
     border-style: none none solid none;
     border-color: white;
     border-width: 1px;
+    position:relative;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 30px;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

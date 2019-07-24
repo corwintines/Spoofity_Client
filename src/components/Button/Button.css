@@ -1,0 +1,25 @@
+.Button {
+  width: 150px;
+  height: 40px;
+  background-color: white;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 45px;
+  font-size: 15pt;
+  color: #4d51a1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.Button:hover {
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  color: white;
+}
+
+p {
+  margin: 0;
+}

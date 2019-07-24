@@ -17,14 +17,22 @@ const Landing: React.FC<Props> = (props) => {
   return (
     <div className='Landing'>
       <div className='landingContainer verticalBorder'>
-        <PlaylistSignIn setPlaylistID={props.setPlaylistID}/>
+        <div className='bottom'>
+          <h1>Contribute to Playlist</h1>
+          <p style={{color: 'white', margin: 20}}>Enter a playlist code and contribute</p>
+          <PlaylistSignIn setPlaylistID={props.setPlaylistID}/>
+        </div>
       </div>
       <div className='landingContainer'>
-        <Button
-          label={'Host'}
-          // TODO: Implement login screen for host, and navigation to it through this method
-          click={() => {console.log('Temp')}}
-        />
+        <div>
+          <h1>Host a Playlist</h1>
+          <p style={{color: 'white', margin: 20}}>Login through Spotify, and host a playlist on your account</p>
+          <Button
+            label={'Host'}
+            // TODO: Implement login screen for host, and navigation to it through this method
+            click={() => {console.log('Temp')}}
+          />
+        </div>
       </div>
     </div>
   )

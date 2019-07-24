@@ -1,6 +1,8 @@
 // Libraries
 import React from 'react'
 
+// Styles
+import './Button.css'
 
 // Component Interface
 type Props = {

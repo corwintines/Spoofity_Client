@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 // Components
 import Button from '../Button/Button'
 
+// Styles
+import './PlaylistSignIn.css'
+
 // Component Interface
 type Props = {
   setPlaylistID: Function,
@@ -13,8 +16,9 @@ const PlaylistSignIn: React.FC<Props> = (props) => {
   const [currentPlaylist, setPlaylist] = useState('')
 
   return (
-    <div>
+    <div className="PlaylistSignIn">
       <input
+        placeholder={'Playlist Code'}
         value={currentPlaylist}
         onChange={(e) => setPlaylist(e.target.value)}
       />
