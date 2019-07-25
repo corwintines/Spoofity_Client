@@ -9,15 +9,17 @@ import './PlaylistSignIn.css'
 
 // Component Interface
 type Props = {
-  setPlaylistID: Function,
+  setPlaylistID: Function
 }
 
 const PlaylistSignIn: React.FC<Props> = (props) => {
   const [currentPlaylist, setPlaylist] = useState('')
 
   return (
-    <div className="PlaylistSignIn">
+    <form className="PlaylistSignIn" onSubmit={() => props.setPlaylistID(currentPlaylist)}>
       <input
+        minLength={4}
+        maxLength={4}
         placeholder={'Playlist Code'}
         value={currentPlaylist}
         onChange={(e) => setPlaylist(e.target.value)}
@@ -25,9 +27,8 @@ const PlaylistSignIn: React.FC<Props> = (props) => {
       <Button
         label={'Submit'}
         // TODO: Implement server connection for playlist verification
-        click={() => {props.setPlaylistID(currentPlaylist)}}
       />
-    </div>
+    </form>
   )
 }
 
