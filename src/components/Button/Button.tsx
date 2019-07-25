@@ -7,14 +7,17 @@ import './Button.css'
 // Component Interface
 type Props = {
   label: string
-  click: Function
+  onClick?: Function
 }
 
 const Button: React.FC<Props> = (props) => {
   return (
-    <div className="Button" onClick={() => props.click()}>
-      <p>{props.label}</p>
-    </div>
+    <input
+      type="submit"
+      className="Button"
+      onClick={() => props.onClick ? props.onClick() : {}}
+      value={props.label}
+    />
   )
 }
 
