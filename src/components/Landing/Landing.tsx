@@ -30,7 +30,9 @@ const Landing: React.FC<Props> = (props) => {
           <Button
             label={'Host'}
             // TODO: Implement login screen for host, and navigation to it through this method
-            click={() => {console.log('Temp')}}
+            click={() => {
+              window.location.replace(`${process.env.REACT_APP_URL}/spotify/authorize`)
+            }}
           />
         </div>
       </div>
