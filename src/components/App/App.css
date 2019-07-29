@@ -1,16 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-  color: white;
-}
-
 .App {
   width: 100vw;
   height: 100vh;
-  background: rgb(7,0,124);
+  background: rgb(7,0,124,1);
   background: linear-gradient(35deg, rgba(7,0,124,1) 0%, rgba(79,79,159,1) 39%, rgba(0,212,255,1) 100%);
-  position: absolute;
 }

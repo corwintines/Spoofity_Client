@@ -3,8 +3,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 
 // Components
-import Button from '../Button/Button'
-import PlaylistSignIn from '../PlaylistSignIn/PlaylistSignIn'
+import Contribute from './Contribute/Contribute'
+import Host from './Host/Host'
 
 // Styles
 import './Landing.css'
@@ -12,24 +12,22 @@ import './Landing.css'
 const Landing = withRouter((props) => {
   return (
     <div className='Landing'>
-      <div className='landingContainer verticalBorder'>
-        <div className='bottom'>
-          <h1>Contribute to Playlist</h1>
-          <p style={{color: 'white', margin: 20}}>Enter a playlist code and contribute</p>
-          <PlaylistSignIn setPlaylistID={(playlistCode: string) => props.history.push(playlistCode)}/>
-        </div>
+      <div className='Landing__container'>
+        <h1 className='Landing__header'>Contribute to a Playlist</h1>
+
+        <p className='Landing__blurb'>Enter a playlist code and contribute</p>
+
+        <Contribute />
       </div>
-      <div className='landingContainer'>
-        <div>
-          <h1>Host a Playlist</h1>
-          <p style={{color: 'white', margin: 20}}>Login through Spotify, and host a playlist on your account</p>
-          <Button
-            label={'Host'}
-            onClick={() => {
-              window.location.assign(`${process.env.REACT_SERVER_URL}/spotify/authorize`);
-            }}
-          />
-        </div>
+
+      <div className='Landing__seperator' />
+
+      <div className='Landing__container'>
+        <h1 className='Landing__header'>Host a Playlist</h1>
+
+        <p className='Landing__blurb'>Login through Spotify, and host a playlist on your account</p>
+
+        <Host />
       </div>
     </div>
   )
