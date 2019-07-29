@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 
 function getPlaylistCodeFromUrl(pathname: string) {
@@ -9,20 +9,20 @@ function getPlaylistCodeFromUrl(pathname: string) {
 }
 
 const SongSelection = withRouter((props) => {  
-  const [playlistCode] = useState(getPlaylistCodeFromUrl(props.location.pathname));
-
-  useEffect(() => {
-    // Validate playlist code
-    if (!/^\d{4}$/.test(playlistCode)) {
-      props.history.replace('');
-    }
-  }, [playlistCode]);
+  const playlistCode = getPlaylistCodeFromUrl(props.location.pathname);
 
   return (
-    <div>
-      <p>Songs</p>
-      <p>{playlistCode}</p>
-    </div>
+    <>
+      {
+        !/^\d{4}$/.test(playlistCode) 
+        ? props.history.replace('')
+        : 
+          <div>
+            <p>Songs</p>
+            <p>{playlistCode}</p>
+          </div>
+      }
+    </>
   )
 });
 

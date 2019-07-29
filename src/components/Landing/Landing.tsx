@@ -25,8 +25,9 @@ const Landing = withRouter((props) => {
           <p style={{color: 'white', margin: 20}}>Login through Spotify, and host a playlist on your account</p>
           <Button
             label={'Host'}
-            // TODO: Implement login screen for host, and navigation to it through this method
-            onClick={() => {console.log('Temp')}}
+            onClick={() => {
+              window.location.replace(`${process.env.REACT_APP_URL}/spotify/authorize`)
+            }}
           />
         </div>
       </div>
