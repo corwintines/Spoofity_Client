@@ -1,5 +1,6 @@
 // Libraries
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
 import Landing from '../Landing/Landing'
@@ -9,17 +10,17 @@ import SongSelection from '../SongSelection/SongSelection'
 import './App.css';
 
 const App: React.FC = () => {
-  const [playlistID, setPlaylistID] = useState('');
-
   return (
-    <div className="App">
-      {/* TODO: Add logo here */}
-      {
-        playlistID
-          ? <SongSelection playlistID={playlistID} />
-          : <Landing setPlaylistID={setPlaylistID}/>
-      }
-    </div>
+    <Router>
+      <div className="App">
+        {/* TODO: Add logo here */}
+
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/:playlistCode" component={SongSelection} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
