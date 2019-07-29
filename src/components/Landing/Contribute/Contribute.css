@@ -1,0 +1,48 @@
+.Contribute {
+  display: flex;
+  flex-direction: row;
+}
+
+.Contribute__input {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+  font-size: calc(20px + 0.8vmin);
+  text-align: center;
+  
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+
+  border: none;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+
+  padding: 8px 20px;
+}
+
+.Contribute__submit {
+  font-size: calc(10px + 0.5vmin);
+  font-weight: bold;
+  
+  /* color: #111; */
+  color: rgba(79,79,159,1);
+  background-color: rgba(255, 255, 255, .9);
+  
+  border: none;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  padding: 8px 20px;
+
+  cursor: pointer;
+
+  transition: background-color 100ms;
+
+  display: flex;
+  align-items: center;
+}
+
+.Contribute__submit:hover {
+  background-color: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .9);
+}
