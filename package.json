@@ -12,8 +12,7 @@
     "react-dom": "16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.3",
-    "use-query-params": "^0.3.3"
+    "typescript": "3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
