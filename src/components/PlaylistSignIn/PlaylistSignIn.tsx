@@ -16,7 +16,11 @@ const PlaylistSignIn: React.FC<Props> = (props) => {
   const [currentPlaylist, setPlaylist] = useState('')
 
   return (
-    <form className="PlaylistSignIn" onSubmit={() => props.setPlaylistID(currentPlaylist)}>
+    <form
+      className="PlaylistSignIn"
+      // TODO: Implement server connection for playlist verification
+      onSubmit={() => props.setPlaylistID(currentPlaylist)}
+    >
       <input
         minLength={4}
         maxLength={4}
@@ -26,7 +30,6 @@ const PlaylistSignIn: React.FC<Props> = (props) => {
       />
       <Button
         label={'Submit'}
-        // TODO: Implement server connection for playlist verification
       />
     </form>
   )
