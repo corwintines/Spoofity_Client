@@ -10,7 +10,6 @@ function getPlaylistCodeFromUrl(pathname: string) {
 
 const SongSelection = withRouter((props) => {  
   const playlistCode = getPlaylistCodeFromUrl(props.location.pathname);
-
   if (!/^[\d\w]{4}$/.test(playlistCode)) {
     props.history.replace('');
     return <p/>;
