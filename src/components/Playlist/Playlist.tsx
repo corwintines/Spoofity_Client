@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 // Components
@@ -10,21 +10,24 @@ import './Playlist.css';
 
 function getPlaylistCodeFromUrl(pathname: string) {
   const parts = pathname.split('/').filter(Boolean);
-  const shareCode = parts[parts.length - 1].toLocaleUpperCase();
-  return shareCode;
+  const roomCode = parts[parts.length - 1].toLocaleUpperCase();
+  return roomCode;
 }
 
 const Playlist = withRouter((props) => {  
-  const playlistCode = getPlaylistCodeFromUrl(props.location.pathname);
-  if (!/^[\d\w]{4}$/.test(playlistCode)) {
+  const roomCode = getPlaylistCodeFromUrl(props.location.pathname);
+  if (!/^[\d\w]{4}$/.test(roomCode)) {
     props.history.replace('');
     return <p/>;
   }
 
+  const [searchResults, setSearchResults] = useState();
+
   return (
     <div className="Playlist">
-      <p>{playlistCode}</p>
-      <Search />
+      <p>{roomCode}</p>
+      <Search roomCode={roomCode} setSearchResults={setSearchResults} />
+      {JSON.stringify(searchResults)}
     </div>
   )
 });
