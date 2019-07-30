@@ -1,6 +1,5 @@
 // Libraries
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 
 // Components
 import Contribute from './Contribute/Contribute'
@@ -9,7 +8,7 @@ import Host from './Host/Host'
 // Styles
 import './Landing.css'
 
-const Landing = withRouter((props) => {
+const Landing: React.FC = () => {
   return (
     <div className='Landing'>
       <div className='Landing__container'>
@@ -20,7 +19,7 @@ const Landing = withRouter((props) => {
         <Contribute />
       </div>
 
-      <div className='Landing__seperator' />
+      <div className='Landing__seperator'></div>
 
       <div className='Landing__container'>
         <h1 className='Landing__header'>Host a Playlist</h1>
@@ -31,6 +30,6 @@ const Landing = withRouter((props) => {
       </div>
     </div>
   )
-});
+};
 
 export default Landing
