@@ -26,7 +26,7 @@ const Landing = withRouter((props) => {
           <Button
             label={'Host'}
             onClick={() => {
-              window.location.replace(`${process.env.REACT_APP_SERVER_URL}/spotify/authorize`);
+              window.location.assign(`${process.env.REACT_APP_SERVER_URL}/spotify/authorize`);
             }}
           />
         </div>
