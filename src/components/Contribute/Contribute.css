@@ -20,6 +20,10 @@
   padding: 8px 20px;
 }
 
+.Contribute__input::placeholder {
+  color: rgba(152, 152, 255, 0.5);
+}
+
 .Contribute__submit {
   font-size: calc(10px + 0.5vmin);
   font-weight: bold;

@@ -2,8 +2,8 @@
 import React from 'react'
 
 // Components
-import Contribute from './Contribute/Contribute'
-import Host from './Host/Host'
+import Contribute from '../Contribute/Contribute'
+import Host from '../Host/Host'
 
 // Styles
 import './Landing.css'

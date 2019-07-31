@@ -8,15 +8,20 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import './Contribute.css'
 
 const Contribute = withRouter((props) => {
-  const roomCodeInput = createRef<HTMLInputElement>();
+  const roomCodeInput = createRef<HTMLInputElement>()
 
   const submitRoomCode = () => {
-    if (!roomCodeInput.current) return;
-    const code = roomCodeInput.current.value;
+    if (!roomCodeInput.current) {
+      return
+    }
+    
+    const code = roomCodeInput.current.value
 
-    if (code.length !== 4) return;
+    if (code.length !== 4) {
+      return
+    }
 
-    props.history.push(`/${code}`);
+    props.history.push(`/${code}`)
   };
 
   return (

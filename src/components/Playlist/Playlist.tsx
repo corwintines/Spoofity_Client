@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 // Components
-import Search from './Search/Search'
+import Search from '../Search/Search'
 
 // Styles
 import './Playlist.css';

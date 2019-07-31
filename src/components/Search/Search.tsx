@@ -1,7 +1,5 @@
 // Libraries
-import React, {createRef} from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import React from 'react'
 
 // Styles
 import './Search.css';
@@ -12,11 +10,10 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = (props) => {
-  const searchInputRef = createRef<HTMLInputElement>();
-
-  const submitSearch = async () => {
-    if (!searchInputRef.current) return;
-    const searchTerm = searchInputRef.current.value;
+  const submitSearch = async (searchTerm: string) => {
+    if (!searchTerm) {
+      return
+    }
 
     const url = new URL('/search', process.env.REACT_APP_SERVER_URL);
     url.searchParams.append('room', props.roomCode);
@@ -40,14 +37,8 @@ const Search: React.FC<SearchProps> = (props) => {
       <input
         className='Search__input'
         size={30}
-        ref={searchInputRef}
+        onChange={(e) => {submitSearch(e.target.value)}}
       />
-      <button
-        className='Search__submit'
-        onClick={submitSearch}
-      >
-        <FontAwesomeIcon icon={faSearch} />
-      </button>
     </div>
   )
 }
