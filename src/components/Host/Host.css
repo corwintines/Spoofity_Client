@@ -1,0 +1,43 @@
+.Host {
+  display: flex;
+  flex-direction: row;
+}
+
+.Host__submit {
+  display: flex;
+  align-items: center;
+
+  font-weight: 500;
+  
+  color: rgba(79,79,159,1);
+  background-color: rgba(255, 255, 255, .9);
+  
+  border: none;
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition: background-color 100ms;
+
+  display: flex;
+  align-items: center;
+}
+
+.Host__submit > .Host__label {
+  font-size: calc(16px + 0.8vmin);
+
+  padding: 8px 20px;
+  padding-right: 2px;
+}
+
+.Host__submit > .Host__icon {
+  font-size: calc(10px + 0.5vmin);
+
+  margin: 8px 20px;
+}
+
+
+.Host__submit:hover {
+  background-color: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .9);
+}

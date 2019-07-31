@@ -1,0 +1,18 @@
+.Search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Search__input {
+  font-size: calc(14px + 0.8vmin);
+  text-align: center;
+  
+  color: #fff;
+  background-color: rgba(255, 255, 255, .2);
+
+  border: none;
+  border-radius: 16px;
+
+  padding: 8px 16px;
+}

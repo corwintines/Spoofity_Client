@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
 import Landing from '../Landing/Landing'
-import SongSelection from '../SongSelection/SongSelection'
+import Playlist from '../Playlist/Playlist'
 
 // Styles
 import './App.css';
@@ -17,7 +17,7 @@ const App: React.FC = () => {
 
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/:playlistCode" component={SongSelection} />
+          <Route exact path="/:playlistCode" component={Playlist} />
         </Switch>
       </div>
     </Router>
