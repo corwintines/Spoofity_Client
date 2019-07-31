@@ -4,11 +4,12 @@ import { withRouter } from 'react-router-dom'
 
 // Components
 import Search from '../Search/Search'
+import Selection from '../Selection/Selection'
 
 // Styles
 import './Playlist.css';
 
-function getPlaylistCodeFromUrl(pathname: string) {
+const getPlaylistCodeFromUrl = (pathname: string) => {
   const parts = pathname.split('/').filter(Boolean);
   const roomCode = parts[parts.length - 1].toLocaleUpperCase();
   return roomCode;
@@ -27,7 +28,7 @@ const Playlist = withRouter((props) => {
     <div className="Playlist">
       <p>{roomCode}</p>
       <Search roomCode={roomCode} setSearchResults={setSearchResults} />
-      {JSON.stringify(searchResults)}
+      <Selection searchResults={searchResults} />
     </div>
   )
 });

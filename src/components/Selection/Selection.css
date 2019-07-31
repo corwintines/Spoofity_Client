@@ -1,0 +1,21 @@
+.Selection {
+  height: 90vh;
+  width: 50%;
+  margin: auto;
+  margin-top: 1.5vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+.Selection::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@media (max-width: 500px) {
+  .Selection {
+    width: 85%;
+  }
+}
