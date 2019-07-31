@@ -20,7 +20,7 @@ const Landing: React.FC = () => {
       </div>
 
       <div className='Landing__seperator'></div>
-
+      
       <div className='Landing__container'>
         <h1 className='Landing__header'>Host a Playlist</h1>
 
