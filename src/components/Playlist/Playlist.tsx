@@ -27,8 +27,14 @@ const Playlist = withRouter((props) => {
   return (
     <div className="Playlist">
       <p>{roomCode}</p>
-      <Search roomCode={roomCode} setSearchResults={setSearchResults} />
-      <Selection searchResults={searchResults} />
+      <Search
+        roomCode={roomCode}
+        setSearchResults={setSearchResults}
+      />
+      <Selection
+        searchResults={searchResults}
+        room={roomCode}
+      />
     </div>
   )
 });

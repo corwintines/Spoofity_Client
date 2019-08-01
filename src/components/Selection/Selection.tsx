@@ -14,14 +14,21 @@ interface Props {
     tracks: { 
       items: Array<any>
     }
-  }
+  },
+  room: string
 }
 
 const Selection: React.FC<Props> = (props) => {
   return (
     <div className='Selection'>
       {props.searchResults && props.searchResults.tracks.items.map((item) => {
-        return <Song song={item} />
+        return (
+        <Song
+          key={item.uri}
+          song={item}
+          room={props.room}  
+        />
+        )
       })}
     </div>
   )
