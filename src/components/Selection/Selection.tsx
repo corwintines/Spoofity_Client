@@ -1,6 +1,9 @@
 // Libraries
 import React from 'react'
 
+// Components
+import Song from '../Song/Song'
+
 // Styles
 import './Selection.css'
 
@@ -11,13 +14,22 @@ interface Props {
     tracks: { 
       items: Array<any>
     }
-  }
+  },
+  room: string
 }
 
 const Selection: React.FC<Props> = (props) => {
   return (
     <div className='Selection'>
-      {JSON.stringify(props.searchResults)}
+      {props.searchResults && props.searchResults.tracks.items.map((item) => {
+        return (
+        <Song
+          key={item.uri}
+          song={item}
+          room={props.room}  
+        />
+        )
+      })}
     </div>
   )
 }
