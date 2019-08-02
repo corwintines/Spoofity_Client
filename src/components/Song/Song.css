@@ -1,7 +1,46 @@
 .Song {
   width: 100%;
-  height: 50px;
+  height: 80px;
   display: flex;
-  
+  align-items: center;
+}
+
+.Song__image {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.Song__title {
   color: white;
+}
+
+.Song__artist {
+  color: #b5b5b5;
+}
+
+.Song__button {
+ float: right;
+ background-color: transparent;
+ border: none;
+ margin-left: auto;
+}
+
+.Song__icon {
+  float: right;
+  color: white;
+  margin-left: auto;
+}
+
+.Song__icon:active {
+  animation-name: rotateOut;
+  animation-duration: 0.25s;
+}
+
+@keyframes rotateOut {
+  100% {
+    transform-origin: center;
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
 }

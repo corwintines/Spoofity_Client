@@ -1,7 +1,7 @@
 // Libraries
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
 //Styles
 import './Song.css'
@@ -9,6 +9,14 @@ import './Song.css'
 // Interface
 interface Props {
   song: {
+    album: {
+      images: Array<{
+        url: string
+      }>
+    },
+    artists: Array<{
+      name: string
+    }>,
     name: string,
     uri: string
   },
@@ -16,10 +24,11 @@ interface Props {
 }
 
 const Song: React.FC<Props> = (props) => {
+  const [added, setAdded] = useState(false)
   const addSong = async (songID: string ) => {
     const url = new URL('/track', process.env.REACT_APP_SERVER_URL)
     try {
-      const res = await fetch(url.href, {
+      await fetch(url.href, {
         method: 'post',
         headers: {
           'content-type': 'application/json'
@@ -29,8 +38,6 @@ const Song: React.FC<Props> = (props) => {
           track_uris: [songID]
         })
       })
-
-      const json = await res.json()
     } catch (err) {
       console.log(err)
     }
@@ -38,15 +45,49 @@ const Song: React.FC<Props> = (props) => {
 
   return (
     <div className='Song'>
-      <p>{props.song.name}</p>
-      <button
-        onClick={() => addSong(props.song.uri)}
-      >
-        <FontAwesomeIcon
-          className='Song__icon'
-          icon={faDownload}
+      <div className='Song__image'>
+        <img
+          src={props.song.album.images[2].url}
+          alt={'album cover'}
+          height='50px'
+          width='50px'
         />
-      </button>
+      </div>
+      <div>
+        <p className='Song__title'>{props.song.name}</p>
+        <p className='Song__artist'>{props.song.artists.map((artist) => {
+          return `${artist.name} `
+        })}</p>
+      </div>
+      {
+        added 
+          ?
+            // NOTE: had to wrap in button to maintain size, would like to clean up
+            // in future if possible
+            <button
+              className='Song__button'
+            >
+              <FontAwesomeIcon
+                className='Song__icon'
+                icon={faCheckCircle}
+                size='2x'
+              />
+            </button>
+          :
+            <button
+              className='Song__button'
+              onClick={() => {
+                addSong(props.song.uri)
+                setAdded(true)
+              }}
+            >
+              <FontAwesomeIcon
+                className='Song__icon'
+                icon={faPlusCircle}
+                size='2x'
+              />
+            </button>
+      }
     </div>
     
   )
