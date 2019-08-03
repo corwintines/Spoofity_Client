@@ -1,10 +1,14 @@
 // Libraries
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 // Components
 import Search from '../../components/Search/Search'
 import Selection from '../../components/Selection/Selection'
+
+// Utils
+import { setRoomCode } from '../../data/roomCode/roomCodeActions'
 
 // Styles
 import './Playlist.css';
@@ -16,9 +20,15 @@ const getPlaylistCodeFromUrl = (pathname: string) => {
 }
 
 const Playlist = withRouter((props) => {  
-  const roomCode = getPlaylistCodeFromUrl(props.location.pathname);
+  const dispatch = useDispatch()
+  const [roomCode] = useState(getPlaylistCodeFromUrl(props.location.pathname));
+  useEffect(() => {
+    dispatch(setRoomCode(roomCode))
+  }, [roomCode])
+  
   if (!/^[\d\w]{4}$/.test(roomCode)) {
     props.history.replace('');
+    dispatch(setRoomCode(null))
     return <p/>;
   }
 
@@ -28,12 +38,10 @@ const Playlist = withRouter((props) => {
     <div className="Playlist">
       <p>{roomCode}</p>
       <Search
-        roomCode={roomCode}
         setSearchResults={setSearchResults}
       />
       <Selection
         searchResults={searchResults}
-        room={roomCode}
       />
     </div>
   )
