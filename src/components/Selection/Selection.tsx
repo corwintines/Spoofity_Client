@@ -1,5 +1,6 @@
 // Libraries
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 // Components
 import Song from '../Song/Song'
@@ -15,10 +16,13 @@ interface Props {
       items: Array<any>
     }
   },
-  room: string
 }
 
 const Selection: React.FC<Props> = (props) => {
+  const { roomCode } = useSelector((state: any) => ({
+    roomCode: state.RoomCodeData.roomCode,
+  }));
+
   return (
     <div className='Selection'>
       {props.searchResults && props.searchResults.tracks.items.map((item) => {
@@ -26,7 +30,7 @@ const Selection: React.FC<Props> = (props) => {
         <Song
           key={item.uri}
           song={item}
-          room={props.room}  
+          room={roomCode}  
         />
         )
       })}
