@@ -3,8 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
-import Landing from '../Landing/Landing'
-import Playlist from '../Playlist/Playlist'
+import Landing from '../../views/Landing/Landing'
+import Playlist from '../../views/Playlist/Playlist'
 
 // Styles
 import './App.css';
