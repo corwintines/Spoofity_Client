@@ -1,10 +1,10 @@
-.Search {
+.SearchBar {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.Search__input {
+.SearchBar__input {
   font-size: calc(14px + 0.8vmin);
   text-align: center;
   

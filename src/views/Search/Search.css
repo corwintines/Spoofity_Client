@@ -1,0 +1,42 @@
+.Search {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+
+  background: black;
+
+  top: 0;
+  left: 0;
+  background: rgb(7,0,124,1);
+  background: linear-gradient(35deg, rgba(7,0,124,1) 0%, rgba(79,79,159,1) 39%, rgba(0,212,255,1) 100%);
+
+  padding: 2.5vh 2.5vw;
+}
+
+.Search__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Search__button {
+  background-color: transparent;
+  border: none;
+  margin-left: 25px;
+}
+
+.Song__icon {
+  float: right;
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .Search__header {
+    justify-content: space-between;
+  }
+
+  .Search__button {
+    margin-left: 0;
+  }
+}

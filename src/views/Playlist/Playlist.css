@@ -1,3 +1,50 @@
 .Playlist {
-  
+  width: 100%;
+  height: 100%;
+  padding: 2.5vh 2.5vw;
+}
+
+.Playlist__header {
+  color: white;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 36px
+}
+
+.Playlist__button {
+  background-color: transparent;
+  border: none;
+  margin-left: 25px;
+}
+
+.Playlist__icon {
+  float: right;
+  color: white;
+}
+
+.Playlist__children {
+  width: 50%;
+  height: calc(95vh - 50px);
+  float: left;
+  color: white;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+@media (max-width: 500px) {
+  .Playlist__header {
+    justify-content: space-between;
+  }
+  .Search__button {
+    margin-left: 0;
+  }
+
+  .Playlist__children {
+    width: 100%;
+    float: none;
+  }
 }

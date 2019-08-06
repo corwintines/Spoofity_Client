@@ -3,14 +3,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 // Styles
-import './Search.css';
+import './SearchBar.css';
 
 // Interface
 interface SearchProps {
   setSearchResults: (results: any) => void;
 }
 
-const Search: React.FC<SearchProps> = (props) => {
+const SearchBar: React.FC<SearchProps> = (props) => {
   const { roomCode } = useSelector((state: any) => ({
       roomCode: state.RoomCodeData.roomCode,
   }));
@@ -39,9 +39,9 @@ const Search: React.FC<SearchProps> = (props) => {
   };
 
   return (
-    <div className="Search">
+    <div className='SearchBar'>
       <input
-        className='Search__input'
+        className='SearchBar__input'
         size={30}
         onChange={(e) => {submitSearch(e.target.value)}}
       />
@@ -49,4 +49,4 @@ const Search: React.FC<SearchProps> = (props) => {
   )
 }
 
-export default Search
+export default SearchBar
