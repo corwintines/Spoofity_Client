@@ -31,6 +31,7 @@ const Selection: React.FC<Props> = (props) => {
           key={item.uri}
           song={item}
           room={roomCode}  
+          addSong
         />
         )
       })}

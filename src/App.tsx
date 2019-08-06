@@ -17,12 +17,12 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
+        <div className='App'>
           {/* TODO: Add logo here */}
 
           <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/:playlistCode" component={Playlist} />
+            <Route exact path='/' component={Landing} />
+            <Route exact path='/:playlistCode' component={Playlist} />
           </Switch>
         </div>
       </Router>

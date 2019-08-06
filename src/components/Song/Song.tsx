@@ -20,7 +20,8 @@ interface Props {
     name: string,
     uri: string
   },
-  room: string
+  room?: string,
+  addSong: boolean
 }
 
 const Song: React.FC<Props> = (props) => {
@@ -59,34 +60,37 @@ const Song: React.FC<Props> = (props) => {
           return `${artist.name} `
         })}</p>
       </div>
-      {
-        added 
+      { props.addSong
           ?
-            // NOTE: had to wrap in button to maintain size, would like to clean up
-            // in future if possible
-            <button
-              className='Song__button'
-            >
-              <FontAwesomeIcon
-                className='Song__icon'
-                icon={faCheckCircle}
-                size='2x'
-              />
-            </button>
+            added 
+              ?
+                // NOTE: had to wrap in button to maintain size, would like to clean up
+                // in future if possible
+                <button
+                  className='Song__button'
+                >
+                  <FontAwesomeIcon
+                    className='Song__icon'
+                    icon={faCheckCircle}
+                    size='2x'
+                  />
+                </button>
+              :
+                <button
+                  className='Song__button'
+                  onClick={() => {
+                    addSong(props.song.uri)
+                    setAdded(true)
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className='Song__icon'
+                    icon={faPlusCircle}
+                    size='2x'
+                  />
+                </button>
           :
-            <button
-              className='Song__button'
-              onClick={() => {
-                addSong(props.song.uri)
-                setAdded(true)
-              }}
-            >
-              <FontAwesomeIcon
-                className='Song__icon'
-                icon={faPlusCircle}
-                size='2x'
-              />
-            </button>
+            <></>
       }
     </div>
     
