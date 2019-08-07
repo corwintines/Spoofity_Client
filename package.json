@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
     "@fortawesome/free-solid-svg-icons": "5.9.0",
     "@fortawesome/react-fontawesome": "0.1.4",
     "@types/jest": "24.0.15",
@@ -13,6 +14,7 @@
     "@types/react-redux": "7.1.1",
     "@types/react-router-dom": "4.3.4",
     "@types/redux": "3.6.0",
+    "query-string": "^6.8.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "7.1.0",
