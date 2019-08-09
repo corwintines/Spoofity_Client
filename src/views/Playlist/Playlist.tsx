@@ -22,16 +22,23 @@ const getPlaylistCodeFromUrl = (pathname: string) => {
   return roomCode
 }
 
-const getPlaylistSongs = async (roomCode: string, setPlaylistSongs: Function) => {
+const getPlaylistSongs = async (roomCode: string, offset: number) => {
   const url = new URL('/playlist/tracks', process.env.REACT_APP_SERVER_URL)
   url.searchParams.append('room', roomCode)
+  url.searchParams.append('offset', String(offset))
 
   try {
     const result = await fetch(url.href, {
       method: 'get'
     })
     const json = await result.json()
-    setPlaylistSongs(json.items)
+    if (json.next) {
+      const next = await getPlaylistSongs(roomCode, offset+100)
+      json.items = [...json.items, ...next.items]
+      return json
+    } else {
+      return json
+    }
   } catch (err) {
 
   }
@@ -40,12 +47,12 @@ const getPlaylistSongs = async (roomCode: string, setPlaylistSongs: Function) =>
 const Playlist = withRouter((props) => {  
   const dispatch = useDispatch()
   const [roomCode] = useState(getPlaylistCodeFromUrl(props.location.pathname))
-  const [playlistSongs, setPlaylistSongs] = useState()
+  const [playlistSongs, setPlaylistSongs] = useState([])
   const [searchDisplay, setSearchDisplay] = useState(false)
 
   useEffect(() => {
     dispatch(setRoomCode(roomCode))
-    getPlaylistSongs(roomCode, setPlaylistSongs)
+    getPlaylistSongs(roomCode, 0).then(songs => setPlaylistSongs(songs.items))
   }, [roomCode])
   
   if (!/^[\d\w]{4}$/.test(roomCode)) {
