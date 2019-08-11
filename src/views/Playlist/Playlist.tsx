@@ -15,6 +15,7 @@ import { setRoomCode } from '../../data/roomCode/roomCodeActions'
 
 // Styles
 import './Playlist.css';
+import { SpotifyPlaylistTrackType } from '../../types/SpotifyPlaylistTrackType';
 
 const getPlaylistCodeFromUrl = (pathname: string) => {
   const parts = pathname.split('/').filter(Boolean)
@@ -22,7 +23,7 @@ const getPlaylistCodeFromUrl = (pathname: string) => {
   return roomCode
 }
 
-const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<any>, setPlaylistSongs: Function) => {
+const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<SpotifyPlaylistTrackType>, setPlaylistSongs: Function) => {
   const url = new URL('/playlist/tracks', process.env.REACT_APP_SERVER_URL)
   url.searchParams.append('room', roomCode)
   url.searchParams.append('offset', String(offset))
@@ -51,6 +52,7 @@ const Playlist = withRouter((props) => {
   useEffect(() => {
     dispatch(setRoomCode(roomCode))
     getPlaylistSongs(roomCode, 0, [], setPlaylistSongs)
+    /*  eslint-disable-next-line */
   }, [roomCode])
   
   if (!/^[\d\w]{4}$/.test(roomCode)) {
