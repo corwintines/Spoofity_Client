@@ -8,12 +8,15 @@ import Song from '../Song/Song'
 // Styles
 import './Selection.css'
 
+// Types
+import { SpotifyTrackType } from '../../types/SpotifyTrackType';
+
 // Interface
 interface Props {
   searchResults: {
     // Just doing tracks for now, can expand later
     tracks: { 
-      items: Array<any>
+      items: Array<SpotifyTrackType>
     }
   },
 }

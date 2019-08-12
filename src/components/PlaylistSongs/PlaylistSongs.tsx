@@ -4,21 +4,13 @@ import React from 'react'
 // Components
 import Song from '../Song/Song'
 
+// Tracks
+import { SpotifyTrackType } from '../../types/SpotifyTrackType';
+
 // Interface
 interface Props {
   songs: Array<{
-    track: {
-      album: {
-        images: Array<{
-          url: string
-        }>
-      },
-      artists: Array<{
-        name: string
-      }>,
-      name: string,
-      uri: string
-    }
+    track: SpotifyTrackType
   }>
 }
 
