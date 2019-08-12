@@ -24,7 +24,8 @@ const SearchBar: React.FC<SearchProps> = (props) => {
     url.searchParams.append('room', roomCode);
     url.searchParams.append('q', searchTerm);
     url.searchParams.append('offset', '0');
-    url.searchParams.append('limit', '50');
+    url.searchParams.append('limit', '4');
+    url.searchParams.append('searchType', 'album,artist,track')
 
     try {
       const result = await fetch(url.href, {

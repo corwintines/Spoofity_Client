@@ -10,11 +10,14 @@ import './Selection.css'
 
 // Types
 import { SpotifyTrackType } from '../../types/SpotifyTrackType';
+import { SpotifyAlbumType } from '../../types/SpotifyAlbumType';
+import { SpotifyArtistType } from '../../types/SpotifyArtistType';
 
 // Interface
 interface Props {
   searchResults: {
-    // Just doing tracks for now, can expand later
+    albums: Array<SpotifyAlbumType>,
+    artists: Array<SpotifyArtistType>,
     tracks: { 
       items: Array<SpotifyTrackType>
     }
