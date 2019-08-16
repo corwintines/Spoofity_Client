@@ -17,8 +17,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className='App' style={{height: window.innerHeight}}>
-          {/* TODO: Add logo here */}
+        <div className='App' style={{minHeight: '100vh'}}>
 
           <Switch>
             <Route exact path='/' component={Landing} />
