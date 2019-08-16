@@ -18,8 +18,9 @@ interface Props {
 
 const Search: React.FC<Props> = (props) => {
   const [searchResults, setSearchResults] = useState()
+  
   return (
-    <div className='Search' style={{ display: 'block' }}>
+    <div className='Search' style={{ display: 'block', height: window.innerHeight }}>
       <div className='Search__header'>
         <SearchBar
           setSearchResults={setSearchResults}
