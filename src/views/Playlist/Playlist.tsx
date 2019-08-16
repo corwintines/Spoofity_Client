@@ -47,7 +47,6 @@ const Playlist = withRouter((props) => {
   const dispatch = useDispatch()
   const [roomCode] = useState(getPlaylistCodeFromUrl(props.location.pathname))
   const [playlistSongs, setPlaylistSongs] = useState([])
-  const [searchDisplay, setSearchDisplay] = useState(false)
 
   useEffect(() => {
     dispatch(setRoomCode(roomCode))
@@ -68,7 +67,7 @@ const Playlist = withRouter((props) => {
         <h2 style={{width: '312px'}}>Playlist: {roomCode}</h2>
         <button
           className='Playlist__button'
-          onClick={() => setSearchDisplay(!searchDisplay)}
+          onClick={() => props.history.push('/search')}
         >
           <FontAwesomeIcon
             className='Playlist__icon'
@@ -83,7 +82,6 @@ const Playlist = withRouter((props) => {
       {/* <div className='Playlist__children'>
         <Vote />
       </div> */}
-      <Search show={searchDisplay} setSearchDisplay={setSearchDisplay} />
     </div>
   )
 });
