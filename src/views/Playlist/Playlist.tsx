@@ -36,7 +36,7 @@ const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs:
     const playlist = [...playlistSongs, ...json.items]
     setPlaylistSongs(playlist)
     if (json.next) {
-      getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs)
+      await getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs)
     }
   } catch (err) {
 
