@@ -6,20 +6,12 @@ import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 //Styles
 import './Song.css'
 
+// Type
+import { SpotifyTrackType } from '../../types/SpotifyTrackType';
+
 // Interface
 interface Props {
-  song: {
-    album: {
-      images: Array<{
-        url: string
-      }>
-    },
-    artists: Array<{
-      name: string
-    }>,
-    name: string,
-    uri: string
-  },
+  song: SpotifyTrackType,
   room?: string,
   addSong: boolean
 }

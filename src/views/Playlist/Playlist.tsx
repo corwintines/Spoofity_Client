@@ -15,6 +15,7 @@ import { setRoomCode } from '../../data/roomCode/roomCodeActions'
 
 // Styles
 import './Playlist.css';
+import { SpotifyPlaylistTrackType } from '../../types/SpotifyPlaylistTrackType';
 
 const getPlaylistCodeFromUrl = (pathname: string) => {
   const parts = pathname.split('/').filter(Boolean)
@@ -22,7 +23,7 @@ const getPlaylistCodeFromUrl = (pathname: string) => {
   return roomCode
 }
 
-const getPlaylistSongs = async (roomCode: string, offset: number) => {
+const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<SpotifyPlaylistTrackType>, setPlaylistSongs: Function) => {
   const url = new URL('/playlist/tracks', process.env.REACT_APP_SERVER_URL)
   url.searchParams.append('room', roomCode)
   url.searchParams.append('offset', String(offset))
@@ -32,12 +33,10 @@ const getPlaylistSongs = async (roomCode: string, offset: number) => {
       method: 'get'
     })
     const json = await result.json()
+    const playlist = [...playlistSongs, ...json.items]
+    setPlaylistSongs(playlist)
     if (json.next) {
-      const next = await getPlaylistSongs(roomCode, offset+100)
-      json.items = [...json.items, ...next.items]
-      return json
-    } else {
-      return json
+      await getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs)
     }
   } catch (err) {
 
@@ -52,7 +51,9 @@ const Playlist = withRouter((props) => {
 
   useEffect(() => {
     dispatch(setRoomCode(roomCode))
-    getPlaylistSongs(roomCode, 0).then(songs => setPlaylistSongs(songs.items))
+    getPlaylistSongs(roomCode, 0, [], setPlaylistSongs)
+    .catch((err) => console.log(err)); // Can handle later
+    /*  eslint-disable-next-line */
   }, [roomCode])
   
   if (!/^[\d\w]{4}$/.test(roomCode)) {
