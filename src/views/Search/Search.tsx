@@ -20,7 +20,7 @@ const Search: React.FC<Props> = (props) => {
   const [searchResults, setSearchResults] = useState()
   
   return (
-    <div className='Search' style={{ display: 'block', height: window.innerHeight }}>
+    <div className='Search' style={{ display: 'block',  minHeight: '100vh' }}>
       <div className='Search__header'>
         <SearchBar
           setSearchResults={setSearchResults}
