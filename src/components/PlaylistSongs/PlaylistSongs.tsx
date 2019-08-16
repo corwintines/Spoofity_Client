@@ -17,10 +17,10 @@ interface Props {
 const PlaylistSongs: React.FC<Props> = (props) => {
   return (
     <div className='PlaylistSongs'>
-      {props.songs && props.songs.map((item) => {
+      {props.songs && props.songs.map((item, index) => {
         return (
           <Song
-            key={item.track.uri}
+            key={index}
             song={item.track}
             addSong={false}
           />

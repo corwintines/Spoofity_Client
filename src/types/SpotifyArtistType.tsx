@@ -8,4 +8,9 @@ export interface SpotifyArtistType {
   name: string,
   type: string
   uri: string
+  images: Array<{
+    height: number,
+    url: string,
+    width: number,
+  }>,
 }

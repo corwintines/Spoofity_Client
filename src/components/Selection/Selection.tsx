@@ -3,6 +3,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 // Components
+import Album from '../Album/Album'
+import Artist from '../Artist/Artist'
 import Song from '../Song/Song'
 
 // Styles
@@ -16,8 +18,12 @@ import { SpotifyArtistType } from '../../types/SpotifyArtistType';
 // Interface
 interface Props {
   searchResults: {
-    albums: Array<SpotifyAlbumType>,
-    artists: Array<SpotifyArtistType>,
+    albums: {
+      items: Array<SpotifyAlbumType>
+    },
+    artists: {
+      items: Array<SpotifyArtistType>
+    },
     tracks: { 
       items: Array<SpotifyTrackType>
     }
@@ -39,6 +45,22 @@ const Selection: React.FC<Props> = (props) => {
           room={roomCode}  
           addSong
         />
+        )
+      })}
+      {props.searchResults && props.searchResults.albums.items.slice(0, 2).map((item) => {
+        return (
+          <Album
+            key={item.uri}
+            album={item}
+          />
+        )
+      })}
+      {props.searchResults && props.searchResults.artists.items.slice(0, 1).map((item) => {
+        return (
+          <Artist
+            key={item.uri}
+            artist={item}
+          />
         )
       })}
     </div>
