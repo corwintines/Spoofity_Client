@@ -10,7 +10,7 @@ import './Landing.css'
 
 const Landing: React.FC = () => {
   return (
-    <div className='Landing'>
+    <div className='Landing' style={{height: window.innerHeight}}>
       <div className='Landing__container'>
         <h1 className='Landing__header'>Contribute to a Playlist</h1>
 
