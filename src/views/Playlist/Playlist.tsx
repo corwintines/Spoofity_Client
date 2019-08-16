@@ -52,6 +52,7 @@ const Playlist = withRouter((props) => {
   useEffect(() => {
     dispatch(setRoomCode(roomCode))
     getPlaylistSongs(roomCode, 0, [], setPlaylistSongs)
+    .catch((err) => console.log(err)); // Can handle later
     /*  eslint-disable-next-line */
   }, [roomCode])
   
