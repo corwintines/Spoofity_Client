@@ -40,7 +40,7 @@ const Album: React.FC<Props> = (props) => {
         <FontAwesomeIcon
           className='Song__icon'
           icon={faAngleRight}
-          size='2x'
+          size='3x'
         />
       </button>
     </div>

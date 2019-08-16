@@ -1,7 +1,7 @@
 // Libraries
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 //Styles
 import './Song.css'
@@ -63,7 +63,7 @@ const Song: React.FC<Props> = (props) => {
                 >
                   <FontAwesomeIcon
                     className='Song__icon'
-                    icon={faCheckCircle}
+                    icon={faCheck}
                     size='2x'
                   />
                 </button>
@@ -77,7 +77,7 @@ const Song: React.FC<Props> = (props) => {
                 >
                   <FontAwesomeIcon
                     className='Song__icon'
-                    icon={faPlusCircle}
+                    icon={faPlus}
                     size='2x'
                   />
                 </button>

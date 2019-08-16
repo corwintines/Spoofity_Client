@@ -37,7 +37,7 @@ const Artist: React.FC<Props> = (props) => {
         <FontAwesomeIcon
           className='Artist__icon'
           icon={faAngleRight}
-          size='2x'
+          size='3x'
         />
       </button>
     </div>
