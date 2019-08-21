@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 // Components
-import Search from '../Search/Search'
 import PlaylistSongs from '../../components/PlaylistSongs/PlaylistSongs'
 // import Vote from '../../components/Vote/Vote'
 

@@ -14,6 +14,9 @@ import './Search.css'
 interface Props {
   show: boolean,
   setSearchDisplay: Function,
+  history: {
+    goBack: Function
+  },
 }
 
 const Search: React.FC<Props> = (props) => {
@@ -27,7 +30,7 @@ const Search: React.FC<Props> = (props) => {
         />
         <button
           className='Search__button'
-          onClick={() => props.setSearchDisplay(false)}
+          onClick={() => props.history.goBack()}
         >
           <FontAwesomeIcon
             className='Song__icon'
