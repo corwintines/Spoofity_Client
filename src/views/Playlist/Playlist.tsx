@@ -7,7 +7,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 // Components
 import PlaylistSongs from '../../components/PlaylistSongs/PlaylistSongs'
-// import Vote from '../../components/Vote/Vote'
 
 // Utils
 import { setRoomCode } from '../../data/roomCode/roomCodeActions'
@@ -56,7 +55,7 @@ const Playlist = withRouter((props) => {
   
   if (!/^[\d\w]{4}$/.test(roomCode)) {
     props.history.replace('');
-    dispatch(setRoomCode(null))
+    dispatch(setRoomCode(''))
     return <p/>;
   }
 
@@ -78,9 +77,6 @@ const Playlist = withRouter((props) => {
       <div className='Playlist__children'>
         <PlaylistSongs songs={playlistSongs} />
       </div>
-      {/* <div className='Playlist__children'>
-        <Vote />
-      </div> */}
     </div>
   )
 });

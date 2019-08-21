@@ -15,29 +15,17 @@ import { SpotifyTrackType } from '../../types/SpotifyTrackType';
 import { SpotifyAlbumType } from '../../types/SpotifyAlbumType';
 import { SpotifyArtistType } from '../../types/SpotifyArtistType';
 
-// Interface
-interface Props {
-  searchResults: {
-    albums: {
-      items: Array<SpotifyAlbumType>
-    },
-    artists: {
-      items: Array<SpotifyArtistType>
-    },
-    tracks: { 
-      items: Array<SpotifyTrackType>
-    }
-  },
-}
-
-const Selection: React.FC<Props> = (props) => {
-  const { roomCode } = useSelector((state: any) => ({
+const Selection: React.FC = () => {
+  const { albums, artists, roomCode, tracks } = useSelector((state: any) => ({
+    albums: state.AlbumsData.albums,
+    artists: state.ArtistsData.artists,
     roomCode: state.RoomCodeData.roomCode,
+    tracks: state.TracksData.tracks,
   }));
 
   return (
     <div className='Selection'>
-      {props.searchResults && props.searchResults.tracks.items.map((item) => {
+      {tracks.map((item: SpotifyTrackType) => {
         return (
         <Song
           key={item.uri}
@@ -47,7 +35,8 @@ const Selection: React.FC<Props> = (props) => {
         />
         )
       })}
-      {props.searchResults && props.searchResults.albums.items.slice(0, 2).map((item) => {
+
+      {albums.map((item: SpotifyAlbumType) => {
         return (
           <Album
             key={item.uri}
@@ -55,7 +44,7 @@ const Selection: React.FC<Props> = (props) => {
           />
         )
       })}
-      {props.searchResults && props.searchResults.artists.items.slice(0, 1).map((item) => {
+      {artists.map((item: SpotifyArtistType) => {
         return (
           <Artist
             key={item.uri}

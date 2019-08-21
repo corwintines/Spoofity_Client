@@ -1,16 +1,17 @@
 // Libraries
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+// Actions
+import { setArtists } from '../../data/artists/artistsActions'
+import { setAlbums } from '../../data/albums/albumsActions'
+import { setTracks } from '../../data/tracks/tracksActions'
 
 // Styles
 import './SearchBar.css';
 
-// Interface
-interface SearchProps {
-  setSearchResults: (results: any) => void;
-}
-
-const SearchBar: React.FC<SearchProps> = (props) => {
+const SearchBar: React.FC = () => {
+  const dispatch = useDispatch()
   const { roomCode } = useSelector((state: any) => ({
       roomCode: state.RoomCodeData.roomCode,
   }));
@@ -33,7 +34,9 @@ const SearchBar: React.FC<SearchProps> = (props) => {
       });
       const json = await result.json();
 
-      props.setSearchResults(json);
+      dispatch(setTracks(json.tracks.items))
+      dispatch(setAlbums(json.albums.items.splice(0,2)))
+      dispatch(setArtists(json.artists.items.splice(0,1)))
     } catch (err) {
       
     }
