@@ -19,7 +19,7 @@ const Album: React.FC<Props> = (props) => {
     <div className='Album'>
       <div className='Album__image'>
         <img
-            src={props.album.images[2].url}
+            src={props.album.images[2] ? props.album.images[2].url : ''}
             alt={'album'}
             height='50px'
             width='50px'

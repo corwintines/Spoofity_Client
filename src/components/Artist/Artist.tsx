@@ -19,7 +19,7 @@ const Artist: React.FC<Props> = (props) => {
     <div className='Artist'>
       <div className='Artist__image'>
           <img
-              src={props.artist.images[2].url || ''}
+              src={props.artist.images[2] ? props.artist.images[2].url : ''}
               alt={'artist'}
               height='50px'
               width='50px'

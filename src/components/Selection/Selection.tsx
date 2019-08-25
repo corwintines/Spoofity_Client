@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 // Components
 import Album from '../Album/Album'
 import Artist from '../Artist/Artist'
+import ExpandSearchItem from '../ExpandSearchItem/ExpandSearchItem'
 import Song from '../Song/Song'
 
 // Styles
@@ -52,6 +53,13 @@ const Selection: React.FC = () => {
           />
         )
       })}
+      {(albums.length>0 && tracks.length>0 && artists.length>0) && 
+        <>
+          <ExpandSearchItem label={'Songs'} searchType={'track'} />
+          <ExpandSearchItem label={'Albums'} searchType={'album'} />
+          <ExpandSearchItem label={'Artists'} searchType={'artist'} />
+        </>
+      }
     </div>
   )
 }

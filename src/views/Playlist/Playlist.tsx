@@ -9,6 +9,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import PlaylistSongs from '../../components/PlaylistSongs/PlaylistSongs'
 
 // Utils
+import { setArtists } from '../../data/artists/artistsActions'
+import { setAlbums } from '../../data/albums/albumsActions'
+import { setSearch } from '../../data/search/searchActions'
+import { setTracks } from '../../data/tracks/tracksActions'
 import { setRoomCode } from '../../data/roomCode/roomCodeActions'
 
 // Styles
@@ -21,20 +25,21 @@ const getPlaylistCodeFromUrl = (pathname: string) => {
   return roomCode
 }
 
-const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<SpotifyPlaylistTrackType>, setPlaylistSongs: Function) => {
+const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<SpotifyPlaylistTrackType>, setPlaylistSongs: Function, abortController: any) => {
   const url = new URL('/playlist/tracks', process.env.REACT_APP_SERVER_URL)
   url.searchParams.append('room', roomCode)
   url.searchParams.append('offset', String(offset))
 
   try {
     const result = await fetch(url.href, {
-      method: 'get'
+      method: 'get',
+      signal: abortController.signal,
     })
     const json = await result.json()
     const playlist = [...playlistSongs, ...json.items]
     setPlaylistSongs(playlist)
     if (json.next) {
-      await getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs)
+      await getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs, abortController)
     }
   } catch (err) {
 
@@ -47,9 +52,16 @@ const Playlist = withRouter((props) => {
   const [playlistSongs, setPlaylistSongs] = useState([])
 
   useEffect(() => {
+    const abortController = new AbortController()
+    const signal = abortController.signal
+
     dispatch(setRoomCode(roomCode))
-    getPlaylistSongs(roomCode, 0, [], setPlaylistSongs)
+    getPlaylistSongs(roomCode, 0, [], setPlaylistSongs, {signal:signal})
     .catch((err) => console.log(err)); // Can handle later
+
+    return function cleanup () {
+      abortController.abort()
+    }
     /*  eslint-disable-next-line */
   }, [roomCode])
   
@@ -65,7 +77,13 @@ const Playlist = withRouter((props) => {
         <h2 style={{width: '312px'}}>Playlist: {roomCode}</h2>
         <button
           className='Playlist__button'
-          onClick={() => props.history.push('/search')}
+          onClick={() => {
+            dispatch(setSearch(''))
+            dispatch(setTracks([]))
+            dispatch(setAlbums([]))
+            dispatch(setArtists([]))
+            props.history.push('/search')
+          }}
         >
           <FontAwesomeIcon
             className='Playlist__icon'
