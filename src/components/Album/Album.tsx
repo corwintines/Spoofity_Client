@@ -1,7 +1,13 @@
 // Libraries
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+// Actions
+import { setArtists } from '../../data/artists/artistsActions'
+import { setAlbums } from '../../data/albums/albumsActions'
+import { setTracks } from '../../data/tracks/tracksActions'
 
 // Styles
 import './Album.css'
@@ -9,12 +15,20 @@ import './Album.css'
 // Type
 import { SpotifyAlbumType } from '../../types/SpotifyAlbumType'
 
+// Utils
+import { getAlbumTracks } from '../../utils/getAlbumTracks'
+
 // Interface
 interface Props {
   album: SpotifyAlbumType
 }
 
 const Album: React.FC<Props> = (props) => {
+  const dispatch = useDispatch()
+  const { roomCode } = useSelector((state: any) => ({
+    roomCode: state.RoomCodeData.roomCode,
+  }));
+
   return (
     <div className='Album'>
       <div className='Album__image'>
@@ -33,8 +47,22 @@ const Album: React.FC<Props> = (props) => {
       </div>
       <button
         className='Song__button'
-        onClick={() => {
-          console.log('album')
+        onClick={async () => {
+          const abortController = new AbortController()
+          const signal = abortController.signal
+          await getAlbumTracks(roomCode, props.album.id, { signal: signal }).then((results) => {
+            const tracks = results.tracks.items.map((song: any) => {
+              return {
+                ...song,
+                album: props.album,
+              }
+            })
+            dispatch(setAlbums([]))
+            dispatch(setArtists([]))
+            dispatch(setTracks(tracks))
+          }).catch(function(err) {
+            console.error(` Err: ${err}`)
+          })
         }}
       >
         <FontAwesomeIcon
