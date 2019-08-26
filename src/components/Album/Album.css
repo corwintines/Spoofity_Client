@@ -14,10 +14,20 @@
 
 .Album__title {
   color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  width: 240px;
 }
 
 .Album__artist {
   color: #b5b5b5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  width: 240px;
 }
 
 .Album__button {

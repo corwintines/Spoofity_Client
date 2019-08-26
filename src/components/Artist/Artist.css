@@ -14,6 +14,11 @@
 
 .Artist__title {
   color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  width: 240px;
 }
 
 .Artist__button {

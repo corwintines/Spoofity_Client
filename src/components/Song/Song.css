@@ -14,10 +14,20 @@
 
 .Song__title {
   color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  width: 240px;
 }
 
 .Song__artist {
   color: #b5b5b5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  width: 240px;
 }
 
 .Song__button {
