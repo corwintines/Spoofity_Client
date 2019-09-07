@@ -12,20 +12,21 @@ import './Login.css';
 
 const Login = withRouter((props) => {
   const dispatch = useDispatch();
-  const {token, service, error} = queryString.parse(props.location.search);
+  const {token_type, access_token, refresh_token, error} = queryString.parse(props.location.search);
 
   useEffect(() => {
     if (error) {
       return;
     }
-    if (typeof token !== 'string' || typeof service !== 'string') {
+    if (typeof token_type !== 'string' || typeof access_token !== 'string' || typeof refresh_token !== 'string') {
       props.history.replace('');
       return;
     }
 
     dispatch(setToken({
-      token,
-      service
+      token_type,
+      access_token,
+      refresh_token
     }));
 
     props.history.replace('playlist');

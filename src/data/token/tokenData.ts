@@ -1,8 +1,9 @@
 import { SET_TOKEN, Token, TokenActionTypes } from './types'
 
 const defaultState = {
-  token: '',
-  service: ''
+  token_type: '',
+  access_token: '',
+  refresh_token: ''
 };
 
 const TokenData = (state: Token = defaultState, action: TokenActionTypes) => {
