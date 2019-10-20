@@ -7,8 +7,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 // Components
 import PlaylistSongs from '../../components/PlaylistSongs/PlaylistSongs'
+import RecommendationSongs from '../../components/RecommendationSongs/RecommendationSongs'
 
 // Utils
+import { getPlaylistCodeFromUrl } from '../../utils/getPlaylistCodeFromUrl'
+import { getPlaylistSongs } from '../../utils/getPlaylistSongs'
+import { getRecommendedSongs } from '../../utils/getRecommendedSongs'
+
+// Actions
 import { setArtists } from '../../data/artists/artistsActions'
 import { setAlbums } from '../../data/albums/albumsActions'
 import { setSearch } from '../../data/search/searchActions'
@@ -17,45 +23,19 @@ import { setRoomCode } from '../../data/roomCode/roomCodeActions'
 
 // Styles
 import './Playlist.css';
-import { SpotifyPlaylistTrackType } from '../../types/SpotifyPlaylistTrackType';
-
-const getPlaylistCodeFromUrl = (pathname: string) => {
-  const parts = pathname.split('/').filter(Boolean)
-  const roomCode = parts[parts.length - 1].toLocaleUpperCase()
-  return roomCode
-}
-
-const getPlaylistSongs = async (roomCode: string, offset: number, playlistSongs: Array<SpotifyPlaylistTrackType>, setPlaylistSongs: Function, abortController: any) => {
-  const url = new URL('/playlist/tracks', process.env.REACT_APP_SERVER_URL)
-  url.searchParams.append('room', roomCode)
-  url.searchParams.append('offset', String(offset))
-
-  try {
-    const result = await fetch(url.href, {
-      method: 'get',
-      signal: abortController.signal,
-    })
-    const json = await result.json()
-    const playlist = [...playlistSongs, ...json.items]
-    setPlaylistSongs(playlist)
-    if (json.next) {
-      await getPlaylistSongs(roomCode, offset+100, playlist, setPlaylistSongs, abortController)
-    }
-  } catch (err) {
-
-  }
-}
 
 const Playlist = withRouter((props) => {  
   const dispatch = useDispatch()
   const [roomCode] = useState(getPlaylistCodeFromUrl(props.location.pathname))
   const [playlistSongs, setPlaylistSongs] = useState([])
+  const [recommendationSongs, setRecommendationSongs] = useState([])
 
   useEffect(() => {
     const abortController = new AbortController()
     const signal = abortController.signal
 
     dispatch(setRoomCode(roomCode))
+    getRecommendedSongs(roomCode).then((recommendations) => setRecommendationSongs(recommendations))
     getPlaylistSongs(roomCode, 0, [], setPlaylistSongs, {signal:signal})
     .catch((err) => console.log(err)); // Can handle later
 
@@ -94,6 +74,9 @@ const Playlist = withRouter((props) => {
       </div>
       <div className='Playlist__children'>
         <PlaylistSongs songs={playlistSongs} />
+      </div>
+      <div className='Playlist__children'>
+        <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
       </div>
     </div>
   )
