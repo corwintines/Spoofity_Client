@@ -74,14 +74,20 @@ const Playlist = withRouter((props) => {
       </div>
       <div className='Playlist__children'>
         <h2>Playlist Songs:</h2>
-        <div className='Playlist__children_songs'>
+        <div className='Playlist__children_songs Playlist__children_songs_fullheight'>
           <PlaylistSongs songs={playlistSongs} />
         </div>
       </div>
       <div className='Playlist__children'>
-        <h2>Recommendations:</h2>
-        <div className='Playlist__children_songs'>
-          <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+        <div>
+          <h2>Recommendations:</h2>
+          <div className='Playlist__children_songs Playlist__children_songs_halfheight'>
+            <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+          </div>
+        </div>
+        <div>
+          <h2>Vote:</h2>
+          <p>Coming Soon.</p>
         </div>
       </div>
     </div>
