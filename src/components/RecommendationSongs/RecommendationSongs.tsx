@@ -16,7 +16,6 @@ interface Props {
 const RecommendationSongs: React.FC<Props> = (props) => {
   return (
     <div className='RecommendationSongs'>
-      <h2>Recommendations:</h2>
       {props.songs && props.songs.map((item, index) => {
         return (
           <Song

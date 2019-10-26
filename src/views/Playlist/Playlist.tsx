@@ -73,10 +73,16 @@ const Playlist = withRouter((props) => {
         </button>
       </div>
       <div className='Playlist__children'>
-        <PlaylistSongs songs={playlistSongs} />
+        <h2>Playlist Songs:</h2>
+        <div className='Playlist__children_songs'>
+          <PlaylistSongs songs={playlistSongs} />
+        </div>
       </div>
       <div className='Playlist__children'>
-        <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+        <h2>Recommendations:</h2>
+        <div className='Playlist__children_songs'>
+          <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+        </div>
       </div>
     </div>
   )
