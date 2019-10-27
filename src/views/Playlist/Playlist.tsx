@@ -8,6 +8,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // Components
 import PlaylistSongs from '../../components/PlaylistSongs/PlaylistSongs'
 import RecommendationSongs from '../../components/RecommendationSongs/RecommendationSongs'
+import Tabs from '../../components/Tabs/Tabs'
 
 // Utils
 import { getPlaylistCodeFromUrl } from '../../utils/getPlaylistCodeFromUrl'
@@ -72,24 +73,28 @@ const Playlist = withRouter((props) => {
           />
         </button>
       </div>
-      <div className='Playlist__children'>
-        <h2>Playlist Songs:</h2>
-        <div className='Playlist__children_songs Playlist__children_songs_fullheight'>
-          <PlaylistSongs songs={playlistSongs} />
-        </div>
-      </div>
-      <div className='Playlist__children'>
-        <div>
-          <h2>Recommendations:</h2>
-          <div className='Playlist__children_songs Playlist__children_songs_halfheight'>
-            <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+      <Tabs
+        titles={['Playlist', 'Recommendation']}
+      >
+        <div className='Playlist__children'>
+          <h2>Playlist Songs:</h2>
+          <div className='Playlist__children_songs Playlist__children_songs_fullheight'>
+            <PlaylistSongs songs={playlistSongs} />
           </div>
         </div>
-        <div>
-          <h2>Vote:</h2>
-          <p>Coming Soon.</p>
+        <div className='Playlist__children'>
+          <>
+            <h2>Recommendations:</h2>
+            <div className='Playlist__children_songs Playlist__children_songs_halfheight'>
+              <RecommendationSongs songs={recommendationSongs} roomCode={roomCode} />
+            </div>
+          </>
+          <>
+            <h2>Vote:</h2>
+            <p>Coming Soon.</p>
+          </>
         </div>
-      </div>
+      </Tabs>
     </div>
   )
 });

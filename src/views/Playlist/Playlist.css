@@ -63,4 +63,8 @@
     width: 100%;
     float: none;
   }
+
+  .Playlist__children_songs_fullheight {
+    height: calc(95vh - 105px);
+  }
 }
