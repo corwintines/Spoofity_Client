@@ -6,7 +6,6 @@
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none; 
-  padding: 10px;
 }
 
 .Selection::-webkit-scrollbar {
