@@ -9,20 +9,20 @@ import { SpotifyTrackType } from '../../types/SpotifyTrackType';
 
 // Interface
 interface Props {
-  songs: Array<{
-    track: SpotifyTrackType
-  }>
+  songs: Array<SpotifyTrackType>
+  roomCode: string
 }
 
-const PlaylistSongs: React.FC<Props> = (props) => {
+const RecommendationSongs: React.FC<Props> = (props) => {
   return (
-    <div className='PlaylistSongs'>
+    <div className='RecommendationSongs'>
       {props.songs && props.songs.map((item, index) => {
         return (
           <Song
             key={index}
-            song={item.track}
-            addSong={false}
+            song={item}
+            room={props.roomCode}
+            addSong={true}
           />
         )
       })}
@@ -30,4 +30,4 @@ const PlaylistSongs: React.FC<Props> = (props) => {
   )
 }
 
-export default PlaylistSongs
+export default RecommendationSongs

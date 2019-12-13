@@ -1,0 +1,23 @@
+.Tabs {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.Tabs__Tab {
+  float: left;
+  height: 100%;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+@media (max-width: 500px) {
+  .Tabs {
+    height: 30px;
+    width: 100%;
+    opacity: 1;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}

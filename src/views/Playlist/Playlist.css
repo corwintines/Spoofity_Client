@@ -27,18 +27,28 @@
 
 .Playlist__children {
   width: 50%;
-  height: calc(95vh - 50px);
   float: left;
   color: white;
+}
+
+.Playlist__children::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.Playlist__children_songs {
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none; 
 }
 
-.Playlist__children::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.Playlist__children_songs_fullheight {
+  height: calc(95vh - 75px);
+}
+
+.Playlist__children_songs_halfheight {
+  height: 45vh;
 }
 
 @media (max-width: 500px) {
@@ -52,5 +62,9 @@
   .Playlist__children {
     width: 100%;
     float: none;
+  }
+
+  .Playlist__children_songs_fullheight {
+    height: calc(95vh - 105px);
   }
 }
