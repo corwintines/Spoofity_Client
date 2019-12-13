@@ -1,6 +1,5 @@
 // Libraries
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,15 +11,23 @@ import Selection from '../../components/Selection/Selection'
 import './Search.css'
 
 // Interface
+interface Props {
+  show: boolean,
+  setSearchDisplay: Function,
+}
 
-const Search = withRouter((props) => {
+const Search: React.FC<Props> = (props) => {
+  const [searchResults, setSearchResults] = useState()
+  const display = props.show ? { display: 'block', minHeight: '100vh' } : { display: 'none', minHeight: '100vh' }
   return (
-    <div className='Search' style={{ display: 'block',  minHeight: '100vh' }}>
+    <div className='Search' style={display}>
       <div className='Search__header'>
-        <SearchBar />
+        <SearchBar
+          setSearchResults={setSearchResults}
+        />
         <button
           className='Search__button'
-          onClick={() => props.history.goBack()}
+          onClick={() => props.setSearchDisplay(false)}
         >
           <FontAwesomeIcon
             className='Song__icon'
@@ -29,9 +36,11 @@ const Search = withRouter((props) => {
           />
         </button>
       </div>
-      <Selection />
+      <Selection
+        searchResults={searchResults}
+      />
     </div>
   )
-})
+}
 
 export default Search
