@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Components
 import Landing from './views/Landing/Landing'
 import Playlist from './views/Playlist/Playlist'
+import Search from './views/Search/Search';
 
 // Utils
 import store from './store'
@@ -21,6 +22,7 @@ const App: React.FC = () => {
 
           <Switch>
             <Route exact path='/' component={Landing} />
+            <Route exact path='/search' component={Search} />
             <Route exact path='/:playlistCode' component={Playlist} />
           </Switch>
         </div>

@@ -1,18 +1,18 @@
-.Song {
+.Artist {
   width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
 }
 
-.Song__image {
+.Artist__image {
   display: block;
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
 
-.Song__title {
+.Artist__title {
   color: white;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -21,36 +21,15 @@
   width: 240px;
 }
 
-.Song__artist {
-  color: #b5b5b5;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: inherit;
-  width: 240px;
-}
-
-.Song__button {
+.Artist__button {
  float: right;
  background-color: transparent;
  border: none;
  margin-left: auto;
 }
 
-.Song__icon {
+.Artist__icon {
   float: right;
   color: white;
   margin-left: auto;
-}
-
-.Song__icon:active {
-  animation-name: rotateOut;
-  animation-duration: 0.25s;
-}
-
-@keyframes rotateOut {
-  100% {
-    transform-origin: center;
-    transform: rotate3d(0, 0, 1, 360deg);
-  }
 }
