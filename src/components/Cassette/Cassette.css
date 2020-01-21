@@ -1,0 +1,98 @@
+.Cassette__body {
+  fill: #E86F68;
+  stroke: #C2B28F;
+}
+
+.Cassette__reel {
+  fill: #E4D8B4;
+  animation-name: reel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.Cassette__reel--left {
+  /* animation-delay: -3s; */
+}
+
+.Cassette__inner-reel {
+  stroke: #E4D8B4;
+}
+
+.Cassette__spool {
+  fill: #C2B28F;
+  animation-name: rotating;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.Cassette__tape {
+  stroke: #272324;
+}
+
+.Cassette__tape--rotate {
+  transform-origin: bottom right;
+  transform-box: fill-box;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.Cassette__tape--left {
+  animation-name: tapeL;
+}
+
+.Cassette__tape--right {
+  animation-name: tapeR;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1500deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes reel {
+  0% {
+    stroke-width: 4px;
+    r: 28px;
+  }
+  50% {
+    stroke-width: 36px;
+    r: 44px;
+  }
+  100% {
+    stroke-width: 4px;
+    r: 28px;
+  }
+}
+
+@keyframes tapeL {
+  0% {
+    transform: rotate(23deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(23deg);
+  }
+}
+
+@keyframes tapeR {
+  0% {
+    transform: rotate(16.7deg);
+  }
+  50% {
+    transform: rotate(-1.9deg);
+  }
+  100% {
+    transform: rotate(16.7deg);
+  }
+}
